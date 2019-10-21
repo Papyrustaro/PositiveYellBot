@@ -1,7 +1,7 @@
 import tweepy
 import random
 import re
-import mecab_main
+import mecab
 import secret_data
 
 key_and_token = secret_data.getTwitterKeyAndToken()
@@ -58,6 +58,7 @@ def tweetPerTime():
 def followBack():
     followers = api.followers_ids(SCREEN_NAME)
     for follower in followers:
+
         try:
             api.create_friendship(follower)
         except Exception as e:
@@ -95,7 +96,7 @@ def rand_reply_text():
 def getProperNoun(timeline_statuses):
     for status in timeline_statuses:
         text = fixTLText(status.text)
-        proper_noun = mecab_main.returnProperNoun(text)
+        proper_noun = mecab.returnProperNoun(text)
         if(proper_noun != ''):
             return proper_noun
     return ''
@@ -105,7 +106,7 @@ def getProperNoun(timeline_statuses):
 def getNoun(timeline_statuses):
     for status in timeline_statuses:
         text = fixTLText(status.text)
-        noun = mecab_main.returnNoun(text)
+        noun = mecab.returnNoun(text)
         if(noun != ''):
             return noun
     return ''
@@ -122,3 +123,7 @@ def fixTLText(tweet_text):
         word += ' '
         output += word
     return output
+
+
+if __name__ == '__main__':
+    tweetPerTime()

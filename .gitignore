@@ -1,4 +1,6 @@
 /secret_data.py
-/analog.log
-/analog-err.log
+/tweet_log.log
+/tweet_log_err.log
+/follow_log.log
+/follow_log_err.log
 /__pycache__/
